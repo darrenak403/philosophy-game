@@ -299,6 +299,70 @@ main > .section + .section {
   background: var(--bg-primary);
 }
 
+/* --- Footer --- */
+.footer-section {
+  background: #050505; /* completely dark to anchor the page */
+  padding: var(--space-2xl) 0 var(--space-3xl);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 -4px 20px rgba(255, 255, 255, 0.03); /* Ánh sáng trắng cực nhẹ hắt lên */
+  text-align: center;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.footer__univ {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.footer__univ strong {
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.footer__members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xl);
+  row-gap: var(--space-sm);
+}
+
+.footer__members span {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  opacity: 0.8;
+  position: relative;
+}
+
+/* Bullet separators for members on large screens */
+@media (min-width: 768px) {
+  .footer__members span:not(:last-child)::after {
+    content: "•";
+    position: absolute;
+    right: calc(var(--space-xl) / -2 - 4px);
+    color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__members {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .footer-section {
+    padding: var(--space-xl) 0 var(--space-xl);
+  }
+}
+
+
 .dev-timeline__year {
   font-family: var(--font-heading);
   font-size: 0.9rem;

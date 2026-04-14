@@ -5,6 +5,7 @@ import { QuantityQualitySection } from './components/landing/QuantityQualitySect
 import { ContradictionSection } from './components/landing/ContradictionSection';
 import { NegationSection } from './components/landing/NegationSection';
 import { GameCTASection } from './components/landing/GameCTASection';
+import { FooterSection } from './components/landing/FooterSection';
 import { GameScreen } from './components/game/GameScreen';
 
 type Page = 'landing' | 'game';
@@ -24,6 +25,7 @@ function App() {
       <ContradictionSection />
       <NegationSection />
       <GameCTASection onStartGame={() => setPage('game')} />
+      <FooterSection />
     </main>
   );
 }

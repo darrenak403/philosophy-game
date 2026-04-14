@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useGameState } from '../../hooks/useGameState';
 import { StatsBar } from './StatsBar';
 import { CEODisplay } from './CEODisplay';
@@ -31,6 +32,22 @@ export function GameScreen({ onBackToLanding }: Props) {
   const { phase } = state;
   const showStats = !['opening', 'rules', 'conclusion', 'ceo-walking', 'cycle-review'].includes(phase);
   const showScene = !['opening', 'rules', 'conclusion', 'ceo-walking', 'cycle-review'].includes(phase);
+
+  /* ===== Auto-play situation audio ===== */
+  useEffect(() => {
+    let audio: HTMLAudioElement | null = null;
+    if (phase === 'choosing' && currentRound?.situationAudio) {
+      audio = new Audio(encodeURI(currentRound.situationAudio));
+      audio.volume = 1.0;
+      audio.play().catch(console.error);
+    }
+    return () => {
+      if (audio) {
+        audio.pause();
+        audio.src = '';
+      }
+    }
+  }, [phase, currentRound?.situationAudio]);
 
   /* ===== MC advance handler ===== */
   const handleMCNext = () => nextMCLine();

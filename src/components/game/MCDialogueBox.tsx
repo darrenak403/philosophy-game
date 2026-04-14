@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { MCLine } from '../../types/game';
 
 interface Props {
@@ -12,6 +12,7 @@ interface Props {
 export function MCDialogueBox({ line, onNext, isLast, onFinish, finishLabel = 'Tiếp tục' }: Props) {
   const [displayed, setDisplayed] = useState('');
   const [done, setDone] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     let audio: HTMLAudioElement | null = null;
@@ -35,6 +36,7 @@ export function MCDialogueBox({ line, onNext, isLast, onFinish, finishLabel = 'T
     
     return () => {
       clearInterval(timer);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
       if (audio) {
         audio.pause();
         audio.src = '';
@@ -43,12 +45,20 @@ export function MCDialogueBox({ line, onNext, isLast, onFinish, finishLabel = 'T
   }, [line.text, line.audio]);
 
   const handleClick = () => {
+    if (timeoutRef.current) return; // Prevent clicking again if already auto-advancing
+
     if (!done) {
-      // Skip to end
+      // Bấm để skip text đang chạy
       setDisplayed(line.text);
       setDone(true);
+      // Tự động chuyển qua dòng sau sau 0.15s (150ms) không cần user bấm lần 2
+      timeoutRef.current = setTimeout(() => {
+        if (isLast) onFinish();
+        else onNext();
+      }, 150);
       return;
     }
+    
     if (isLast) {
       onFinish();
     } else {

@@ -25,6 +25,53 @@
 .hero__content {
   position: relative;
   z-index: 3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+  width: 100%;
+}
+
+.hero__text-col {
+  flex: 1;
+  max-width: 600px;
+  padding-bottom: 8rem; /* give space to avoid scroll indicator overlap */
+}
+
+.hero__visual-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__philosopher {
+  width: 100%;
+  max-width: 450px;
+  max-height: 75vh;
+  object-fit: contain;
+  mix-blend-mode: screen; /* Drops the black background seamlessly */
+  filter: drop-shadow(0 0 40px rgba(184, 134, 11, 0.3)); /* Subtle gold aura */
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: var(--space-3xl);
+  }
+  .hero__text-col {
+    padding-bottom: 2rem;
+  }
+  .hero blockquote {
+    text-align: left;
+    margin: 0 auto;
+  }
+  .hero__philosopher {
+    max-height: 40vh;
+  }
 }
 
 .hero__title {

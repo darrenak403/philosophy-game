@@ -46,13 +46,56 @@
   align-items: center;
 }
 
+.hero__philosopher-wrap {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+}
+
+.hero__philosopher-wrap::before,
+.hero__philosopher-wrap::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero__philosopher-wrap::before {
+  width: min(64vw, 500px);
+  height: min(64vw, 500px);
+  background: radial-gradient(
+    circle,
+    rgba(255, 211, 102, 0.2) 0%,
+    rgba(255, 186, 52, 0.1) 35%,
+    rgba(255, 186, 52, 0) 70%
+  );
+  filter: blur(24px);
+}
+
+.hero__philosopher-wrap::after {
+  width: min(50vw, 380px);
+  height: min(50vw, 380px);
+  background: radial-gradient(
+    circle,
+    rgba(255, 241, 179, 0.16) 0%,
+    rgba(255, 232, 120, 0.08) 45%,
+    rgba(255, 232, 120, 0) 72%
+  );
+  filter: blur(14px);
+}
+
 .hero__philosopher {
   width: 100%;
   max-width: 450px;
   max-height: 75vh;
   object-fit: contain;
   mix-blend-mode: screen; /* Drops the black background seamlessly */
-  filter: drop-shadow(0 0 40px rgba(184, 134, 11, 0.3)); /* Subtle gold aura */
+  filter:
+    drop-shadow(0 0 12px rgba(255, 204, 96, 0.3))
+    drop-shadow(0 0 28px rgba(190, 137, 24, 0.2));
   border-radius: 8px;
 }
 
@@ -71,6 +114,17 @@
   }
   .hero__philosopher {
     max-height: 40vh;
+  }
+
+  .hero__philosopher-wrap::before {
+    width: min(74vw, 400px);
+    height: min(74vw, 400px);
+    filter: blur(20px);
+  }
+
+  .hero__philosopher-wrap::after {
+    width: min(58vw, 280px);
+    height: min(58vw, 280px);
   }
 }
 

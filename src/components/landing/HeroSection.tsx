@@ -40,11 +40,13 @@ export function HeroSection() {
 
         {/* Right Column: Visual Statue */}
         <div className="hero__visual-col reveal reveal-delay-3 visible">
-          <img 
-            src="/assets/heraclitus.webp" 
-            alt="Statue of Heraclitus" 
-            className="hero__philosopher" 
-          />
+          <div className="hero__philosopher-wrap">
+            <img
+              src="/assets/heraclitus.webp"
+              alt="Statue of Heraclitus"
+              className="hero__philosopher"
+            />
+          </div>
         </div>
 
         <div className="hero__scroll-indicator">

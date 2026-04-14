@@ -14,6 +14,13 @@ export function MCDialogueBox({ line, onNext, isLast, onFinish, finishLabel = 'T
   const [done, setDone] = useState(false);
 
   useEffect(() => {
+    let audio: HTMLAudioElement | null = null;
+    if (line.audio) {
+      audio = new Audio(encodeURI(line.audio));
+      audio.volume = 1.0;
+      audio.play().catch(console.error);
+    }
+
     setDisplayed('');
     setDone(false);
     let i = 0;
@@ -25,8 +32,15 @@ export function MCDialogueBox({ line, onNext, isLast, onFinish, finishLabel = 'T
         setDone(true);
       }
     }, 25);
-    return () => clearInterval(timer);
-  }, [line.text]);
+    
+    return () => {
+      clearInterval(timer);
+      if (audio) {
+        audio.pause();
+        audio.src = '';
+      }
+    };
+  }, [line.text, line.audio]);
 
   const handleClick = () => {
     if (!done) {

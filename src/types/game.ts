@@ -18,6 +18,7 @@ export interface MCLine {
   speaker: 'MC1' | 'MC2';
   text: string;
   pause?: boolean;
+  audio?: string;
 }
 
 /* ===== Choices ===== */
@@ -36,6 +37,7 @@ export interface Round {
   title: string;
   mcIntro: MCLine[];       // MC dẫn vào tình huống
   situation: string;       // Mô tả tình huống ngắn gọn (hiện trên card)
+  situationAudio?: string; // Audio đọc mô tả tình huống
   choices: Choice[];       // 2 lựa chọn
   mcResults: Record<string, MCLine[]>; // MC bình luận theo choiceId
   mcTransition: MCLine[];  // MC nối sang vòng sau

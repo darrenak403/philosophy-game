@@ -47,6 +47,18 @@
   flex-shrink: 0;
 }
 
+.game__year-indicator {
+  text-align: center;
+  padding: 6px 0 10px;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
 /* ===== FULLSCREEN — Opening / Rules / Conclusion ===== */
 .game__fullscreen {
   flex: 1;

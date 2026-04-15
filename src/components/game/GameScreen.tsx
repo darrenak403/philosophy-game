@@ -32,6 +32,7 @@ export function GameScreen({ onBackToLanding }: Props) {
   const { phase } = state;
   const showStats = !['opening', 'rules', 'conclusion', 'ceo-walking', 'cycle-review'].includes(phase);
   const showScene = !['opening', 'rules', 'conclusion', 'ceo-walking', 'cycle-review'].includes(phase);
+  const currentYear = 2022 + (state.generation - 1) * 5 + (state.currentRound - 1);
 
   /* ===== Auto-play situation audio ===== */
   useEffect(() => {
@@ -104,6 +105,9 @@ export function GameScreen({ onBackToLanding }: Props) {
       </header>
 
       {showStats && <StatsBar stats={state.stats} />}
+      {showStats && (
+        <div className="game__year-indicator">Năm {currentYear}</div>
+      )}
 
       {/* ===== WALKING TRANSITION ===== */}
       {phase === 'ceo-walking' && (

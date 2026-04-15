@@ -155,14 +155,14 @@ function gameReducer(state: GameState, action: GameAction): GameState {
     }
 
     case 'CONTINUE_CYCLE': {
-      // After cycle-review bubbles → next CEO walks in at round 2
+      // After cycle-review bubbles → next CEO starts a full new cycle from round 1
       const nextCeoIdx = (state.ceoIndex + 1) % CEOS.length;
       return {
         ...state,
         phase: 'ceo-walking',
         ceoState: 'walking',
         ceoIndex: nextCeoIdx,
-        currentRound: 2,
+        currentRound: 1,
         generation: state.generation + 1,
         lastChoice: null,
       };

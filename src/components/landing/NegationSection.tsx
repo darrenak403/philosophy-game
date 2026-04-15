@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { FrameAnimation } from './FrameAnimation';
 
 const STAGES = [
   {
@@ -27,47 +28,67 @@ const STAGES = [
   },
 ];
 
+const NEG_FRAMES = [
+  '/assets/illustrations/frames/neg-frame-1.webp',
+  '/assets/illustrations/frames/neg-frame-2.webp',
+  '/assets/illustrations/frames/neg-frame-3.webp',
+  '/assets/illustrations/frames/neg-frame-4.webp',
+];
+
 export function NegationSection() {
   const { ref, visible } = useScrollReveal(0.1);
 
   return (
     <section className="section" id="negation">
       <div className="container">
-        <div className={`reveal ${visible ? 'visible' : ''}`} ref={ref}>
-          <span className="label">Quy luật 03</span>
-          <h2>Phủ định của Phủ định</h2>
-          <div className="divider" />
-          <p className="body-large">
-            Sự vật mới ra đời thay thế sự vật cũ, nhưng kế thừa những yếu tố
-            tích cực. Quá trình này diễn ra theo đường xoáy ốc đi lên.
-          </p>
-        </div>
-
-        <div className="neg-cards">
-          {STAGES.map((stage, i) => (
-            <div
-              key={stage.name}
-              className={`neg-card reveal reveal-delay-${i + 1} ${visible ? 'visible' : ''}`}
-            >
-              <span className="neg-card__era">{stage.era}</span>
-              <h3 className="neg-card__name">{stage.name}</h3>
-              <p className="neg-card__desc">{stage.desc}</p>
-              {stage.inherited && (
-                <p className="neg-card__inherited">{stage.inherited}</p>
-              )}
-              {i < STAGES.length - 1 && (
-                <div className="neg-card__arrow">→</div>
-              )}
+        <div className="section-with-illus">
+          <div className="section-with-illus__text">
+            <div className={`reveal ${visible ? 'visible' : ''}`} ref={ref}>
+              <span className="label">Quy luật 03</span>
+              <h2>Phủ định của Phủ định</h2>
+              <div className="divider" />
+              <p className="body-large">
+                Sự vật mới ra đời thay thế sự vật cũ, nhưng kế thừa những yếu tố
+                tích cực. Quá trình này diễn ra theo đường xoáy ốc đi lên.
+              </p>
             </div>
-          ))}
-        </div>
 
-        <div className={`reveal reveal-delay-4 ${visible ? 'visible' : ''} mt-xl text-center`}>
-          <p className="body-large">
-            Mỗi thế hệ "phủ định" thế hệ trước nhưng không xóa sổ hoàn toàn —
-            nó kế thừa và nâng cấp. Đó là quy luật vận động xoáy ốc đi lên
-            của lịch sử.
-          </p>
+            <div className="neg-cards">
+              {STAGES.map((stage, i) => (
+                <div
+                  key={stage.name}
+                  className={`neg-card reveal reveal-delay-${i + 1} ${visible ? 'visible' : ''}`}
+                >
+                  <span className="neg-card__era">{stage.era}</span>
+                  <h3 className="neg-card__name">{stage.name}</h3>
+                  <p className="neg-card__desc">{stage.desc}</p>
+                  {stage.inherited && (
+                    <p className="neg-card__inherited">{stage.inherited}</p>
+                  )}
+                  {i < STAGES.length - 1 && (
+                    <div className="neg-card__arrow">→</div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className={`reveal reveal-delay-4 ${visible ? 'visible' : ''} mt-xl text-center`}>
+              <p className="body-large">
+                Mỗi thế hệ "phủ định" thế hệ trước nhưng không xóa sổ hoàn toàn —
+                nó kế thừa và nâng cấp. Đó là quy luật vận động xoáy ốc đi lên
+                của lịch sử.
+              </p>
+            </div>
+          </div>
+
+          <div className="section-with-illus__visual">
+            <FrameAnimation
+              frames={NEG_FRAMES}
+              active={visible}
+              interval={1200}
+              alt="Phủ định của phủ định"
+            />
+          </div>
         </div>
       </div>
     </section>

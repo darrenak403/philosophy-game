@@ -1,5 +1,13 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { useEffect, useState } from 'react';
+import { FrameAnimation } from './FrameAnimation';
+
+const QQ_FRAMES = [
+  '/assets/illustrations/frames/qq-frame-1.webp',
+  '/assets/illustrations/frames/qq-frame-2.webp',
+  '/assets/illustrations/frames/qq-frame-3.webp',
+  '/assets/illustrations/frames/qq-frame-4.webp',
+];
 
 export function QuantityQualitySection() {
   const { ref, visible } = useScrollReveal(0.2);
@@ -27,48 +35,61 @@ export function QuantityQualitySection() {
 
   return (
     <section className="section" id="quantity-quality">
-      <div className="container container--narrow text-center" ref={ref}>
-        <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <span className="label">Quy luật 01</span>
-          <h2>Lượng — Chất</h2>
-          <div className="divider" style={{ margin: '1.5rem auto' }} />
-          <p className="body-large">
-            Tích lũy đủ về lượng sẽ dẫn đến bước nhảy vọt về chất.
-          </p>
-        </div>
+      <div className="container container--narrow" ref={ref}>
+        <div className="section-with-illus">
+          <div className="section-with-illus__text text-center">
+            <div className={`reveal ${visible ? 'visible' : ''}`}>
+              <span className="label">Quy luật 01</span>
+              <h2>Lượng — Chất</h2>
+              <div className="divider" style={{ margin: '1.5rem auto' }} />
+              <p className="body-large">
+                Tích lũy đủ về lượng sẽ dẫn đến bước nhảy vọt về chất.
+              </p>
+            </div>
 
-        <div className={`qq-demo reveal reveal-delay-2 ${visible ? 'visible' : ''}`}>
-          <p className="qq-demo__formula">
-            10 từ/ngày × 180 ngày ={' '}
-            <span className="qq-demo__counter">
-              {count.toLocaleString('vi-VN')}
-            </span>{' '}
-            từ vựng
-          </p>
+            <div className={`qq-demo reveal reveal-delay-2 ${visible ? 'visible' : ''}`}>
+              <p className="qq-demo__formula">
+                10 từ/ngày × 180 ngày ={' '}
+                <span className="qq-demo__counter">
+                  {count.toLocaleString('vi-VN')}
+                </span>{' '}
+                từ vựng
+              </p>
 
-          <div className="progress-bar mt-lg" style={{ maxWidth: 480, margin: '1.5rem auto' }}>
-            <div
-              className="progress-bar__fill"
-              style={{ width: `${progress}%` }}
+              <div className="progress-bar mt-lg" style={{ maxWidth: 480, margin: '1.5rem auto' }}>
+                <div
+                  className="progress-bar__fill"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+
+              <div className={`qq-demo__leap ${isComplete ? 'visible' : ''}`}>
+                <span className="label" style={{ fontSize: '1rem', letterSpacing: '0.15em' }}>
+                  Bước nhảy
+                </span>
+                <p className="mt-md text-muted">
+                  Sau 6 tháng kiên trì, bạn đột nhiên giao tiếp trôi chảy
+                  với người bản xứ — đó là lúc LƯỢNG chuyển thành CHẤT.
+                </p>
+              </div>
+            </div>
+
+            <div className={`reveal reveal-delay-3 ${visible ? 'visible' : ''} mt-xl`}>
+              <p className="body-large">
+                Bạn không thể giỏi Tiếng Anh sau 1 đêm. Mỗi ngày tích lũy
+                một chút — đến "điểm nút", bước nhảy vọt sẽ xảy ra.
+              </p>
+            </div>
+          </div>
+
+          <div className="section-with-illus__visual">
+            <FrameAnimation
+              frames={QQ_FRAMES}
+              active={visible}
+              interval={1000}
+              alt="Lượng đổi chất đổi"
             />
           </div>
-
-          <div className={`qq-demo__leap ${isComplete ? 'visible' : ''}`}>
-            <span className="label" style={{ fontSize: '1rem', letterSpacing: '0.15em' }}>
-              Bước nhảy
-            </span>
-            <p className="mt-md text-muted">
-              Sau 6 tháng kiên trì, bạn đột nhiên giao tiếp trôi chảy
-              với người bản xứ — đó là lúc LƯỢNG chuyển thành CHẤT.
-            </p>
-          </div>
-        </div>
-
-        <div className={`reveal reveal-delay-3 ${visible ? 'visible' : ''} mt-xl`}>
-          <p className="body-large">
-            Bạn không thể giỏi Tiếng Anh sau 1 đêm. Mỗi ngày tích lũy
-            một chút — đến "điểm nút", bước nhảy vọt sẽ xảy ra.
-          </p>
         </div>
       </div>
     </section>

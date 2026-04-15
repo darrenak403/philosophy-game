@@ -1,23 +1,9 @@
 import "./landing.css";
 
-type ResponsibleAIPageProps = {
-  onBack?: () => void;
-};
-
-export function ResponsibleAIPage({onBack}: ResponsibleAIPageProps) {
+export function ResponsibleAIPage() {
   return (
     <section className="section responsible-ai-page">
       <div className="container container--narrow responsible-ai__container">
-        {/* {onBack ? (
-          <button
-            type="button"
-            className="btn landing-header__ai-btn"
-            onClick={onBack}
-          >
-            Quay lại trang chủ
-          </button>
-        ) : null}
- */}
         <h1 className="responsible-ai__title mt-md">
           Các nội dung AI nhóm đã sử dụng
         </h1>

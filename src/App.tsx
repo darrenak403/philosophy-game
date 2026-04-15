@@ -23,7 +23,7 @@ function App() {
     return (
       <main>
         <LandingHeader onOpenResponsibleAI={() => setPage('responsible-ai')} />
-        <ResponsibleAIPage onBack={() => setPage('landing')} />
+        <ResponsibleAIPage />
         <FooterSection />
       </main>
     );

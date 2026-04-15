@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { HeroSection } from './components/landing/HeroSection';
+import { LandingHeader } from './components/landing/LandingHeader';
 import { DevelopmentSection } from './components/landing/DevelopmentSection';
 import { QuantityQualitySection } from './components/landing/QuantityQualitySection';
 import { ContradictionSection } from './components/landing/ContradictionSection';
 import { NegationSection } from './components/landing/NegationSection';
 import { GameCTASection } from './components/landing/GameCTASection';
 import { FooterSection } from './components/landing/FooterSection';
+import { ResponsibleAIPage } from './components/landing/ResponsibleAIPage';
 import { GameScreen } from './components/game/GameScreen';
 
-type Page = 'landing' | 'game';
+type Page = 'landing' | 'game' | 'responsible-ai';
 
 function App() {
   const [page, setPage] = useState<Page>('landing');
@@ -17,8 +19,19 @@ function App() {
     return <GameScreen onBackToLanding={() => setPage('landing')} />;
   }
 
+  if (page === 'responsible-ai') {
+    return (
+      <main>
+        <LandingHeader onOpenResponsibleAI={() => setPage('responsible-ai')} />
+        <ResponsibleAIPage onBack={() => setPage('landing')} />
+        <FooterSection />
+      </main>
+    );
+  }
+
   return (
     <main>
+      <LandingHeader onOpenResponsibleAI={() => setPage('responsible-ai')} />
       <HeroSection />
       <DevelopmentSection />
       <QuantityQualitySection />

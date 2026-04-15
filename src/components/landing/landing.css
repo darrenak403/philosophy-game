@@ -2,6 +2,119 @@
    Landing Page Styles
    ========================================================================== */
 
+/* --- Header --- */
+.landing-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  background: rgba(10, 10, 10, 0.82);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+}
+
+.landing-header__inner {
+  min-height: 76px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: var(--space-lg);
+}
+
+.landing-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.landing-header__logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.landing-header__title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--text-primary);
+}
+
+.landing-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.landing-header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.landing-header__link {
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.landing-header__link:hover {
+  color: var(--accent-gold);
+}
+
+.landing-header__ai-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent-gold);
+  background: rgba(201, 168, 76, 0.16);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.52rem 0.95rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.landing-header__ai-btn:hover {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+}
+
+#hero,
+#development,
+#quantity-quality,
+#contradiction,
+#negation,
+#game-cta {
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 1024px) {
+  .landing-header__inner {
+    column-gap: var(--space-md);
+  }
+
+  .landing-header__nav {
+    gap: var(--space-md);
+  }
+
+  .landing-header__link {
+    font-size: 0.78rem;
+    letter-spacing: 0.045em;
+  }
+
+  .landing-header__ai-btn {
+    font-size: 0.74rem;
+    padding: 0.46rem 0.76rem;
+  }
+}
+
 /* --- Hero --- */
 .hero {
   position: relative;
@@ -100,6 +213,77 @@
 }
 
 @media (max-width: 768px) {
+  .landing-header__inner {
+    min-height: 74px;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand ai"
+      "nav nav";
+    align-items: center;
+    padding-top: var(--space-sm);
+    padding-bottom: 0.65rem;
+  }
+
+  .landing-header__brand {
+    grid-area: brand;
+    gap: var(--space-sm);
+  }
+
+  .landing-header__logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .landing-header__title {
+    font-size: 1.1rem;
+  }
+
+  .landing-header__actions {
+    grid-area: nav;
+    width: 100%;
+    margin-top: var(--space-sm);
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .landing-header__nav {
+    width: max-content;
+    justify-content: flex-start;
+    gap: 0.95rem;
+    padding-bottom: 2px;
+  }
+
+  .landing-header__actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .landing-header__link {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .landing-header__ai-btn {
+    grid-area: ai;
+    align-self: center;
+    font-size: 0.68rem;
+    padding: 0.45rem 0.68rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  #hero,
+  #development,
+  #quantity-quality,
+  #contradiction,
+  #negation,
+  #game-cta {
+    scroll-margin-top: 150px;
+  }
+
   .hero__content {
     flex-direction: column-reverse;
     text-align: center;
@@ -618,6 +802,72 @@ main > .section + .section {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* --- Responsible AI Page --- */
+.responsible-ai-page {
+  min-height: 100vh;
+  justify-content: flex-start;
+  background:
+    radial-gradient(circle at top left, rgba(201, 168, 76, 0.08), transparent 40%),
+    var(--bg-primary);
+}
+
+.responsible-ai__container {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+}
+
+.responsible-ai__title {
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  line-height: 1.22;
+}
+
+.responsible-ai__card p {
+  color: var(--text-secondary);
+}
+
+.responsible-ai__card h2,
+.responsible-ai__card h3 {
+  font-size: clamp(1.35rem, 2.2vw, 1.95rem);
+  line-height: 1.3;
+  margin-bottom: var(--space-sm);
+}
+
+.responsible-ai__list {
+  margin-top: var(--space-sm);
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.72;
+}
+
+.responsible-ai__list li + li {
+  margin-top: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+  .responsible-ai__container {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .responsible-ai__title {
+    font-size: clamp(1.7rem, 8vw, 2.1rem);
+  }
+
+  .responsible-ai-page .body-large {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .responsible-ai__card {
+    padding: var(--space-lg);
+  }
+
+  .responsible-ai__card h2,
+  .responsible-ai__card h3 {
+    font-size: 1.35rem;
+  }
 }
 
 @media (max-width: 768px) {

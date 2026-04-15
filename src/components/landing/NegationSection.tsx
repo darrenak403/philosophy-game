@@ -41,6 +41,7 @@ export function NegationSection() {
   return (
     <section className="section" id="negation">
       <div className="container">
+        {/* Header + Illustration: 2-column */}
         <div className="section-with-illus">
           <div className="section-with-illus__text">
             <div className={`reveal ${visible ? 'visible' : ''}`} ref={ref}>
@@ -50,33 +51,6 @@ export function NegationSection() {
               <p className="body-large">
                 Sự vật mới ra đời thay thế sự vật cũ, nhưng kế thừa những yếu tố
                 tích cực. Quá trình này diễn ra theo đường xoáy ốc đi lên.
-              </p>
-            </div>
-
-            <div className="neg-cards">
-              {STAGES.map((stage, i) => (
-                <div
-                  key={stage.name}
-                  className={`neg-card reveal reveal-delay-${i + 1} ${visible ? 'visible' : ''}`}
-                >
-                  <span className="neg-card__era">{stage.era}</span>
-                  <h3 className="neg-card__name">{stage.name}</h3>
-                  <p className="neg-card__desc">{stage.desc}</p>
-                  {stage.inherited && (
-                    <p className="neg-card__inherited">{stage.inherited}</p>
-                  )}
-                  {i < STAGES.length - 1 && (
-                    <div className="neg-card__arrow">→</div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div className={`reveal reveal-delay-4 ${visible ? 'visible' : ''} mt-xl text-center`}>
-              <p className="body-large">
-                Mỗi thế hệ "phủ định" thế hệ trước nhưng không xóa sổ hoàn toàn —
-                nó kế thừa và nâng cấp. Đó là quy luật vận động xoáy ốc đi lên
-                của lịch sử.
               </p>
             </div>
           </div>
@@ -89,6 +63,34 @@ export function NegationSection() {
               alt="Phủ định của phủ định"
             />
           </div>
+        </div>
+
+        {/* Cards: full-width below */}
+        <div className="neg-cards">
+          {STAGES.map((stage, i) => (
+            <div
+              key={stage.name}
+              className={`neg-card reveal reveal-delay-${i + 1} ${visible ? 'visible' : ''}`}
+            >
+              <span className="neg-card__era">{stage.era}</span>
+              <h3 className="neg-card__name">{stage.name}</h3>
+              <p className="neg-card__desc">{stage.desc}</p>
+              {stage.inherited && (
+                <p className="neg-card__inherited">{stage.inherited}</p>
+              )}
+              {i < STAGES.length - 1 && (
+                <div className="neg-card__arrow">→</div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className={`reveal reveal-delay-4 ${visible ? 'visible' : ''} mt-xl text-center`}>
+          <p className="body-large">
+            Mỗi thế hệ "phủ định" thế hệ trước nhưng không xóa sổ hoàn toàn —
+            nó kế thừa và nâng cấp. Đó là quy luật vận động xoáy ốc đi lên
+            của lịch sử.
+          </p>
         </div>
       </div>
     </section>

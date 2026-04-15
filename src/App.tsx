@@ -15,6 +15,23 @@ type Page = 'landing' | 'game' | 'responsible-ai';
 function App() {
   const [page, setPage] = useState<Page>('landing');
 
+  const handleNavigateToSection = (href: string) => {
+    setPage('landing');
+
+    window.setTimeout(() => {
+      const sectionId = href.replace('#', '');
+      const section = document.getElementById(sectionId);
+
+      if (section) {
+        section.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+
+      if (window.location.hash !== href) {
+        window.history.replaceState(null, '', href);
+      }
+    }, 0);
+  };
+
   if (page === 'game') {
     return <GameScreen onBackToLanding={() => setPage('landing')} />;
   }
@@ -22,7 +39,10 @@ function App() {
   if (page === 'responsible-ai') {
     return (
       <main>
-        <LandingHeader onOpenResponsibleAI={() => setPage('responsible-ai')} />
+        <LandingHeader
+          onOpenResponsibleAI={() => setPage('responsible-ai')}
+          onNavigateToSection={handleNavigateToSection}
+        />
         <ResponsibleAIPage />
         <FooterSection />
       </main>
@@ -31,7 +51,10 @@ function App() {
 
   return (
     <main>
-      <LandingHeader onOpenResponsibleAI={() => setPage('responsible-ai')} />
+      <LandingHeader
+        onOpenResponsibleAI={() => setPage('responsible-ai')}
+        onNavigateToSection={handleNavigateToSection}
+      />
       <HeroSection />
       <DevelopmentSection />
       <QuantityQualitySection />

@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import "./landing.css";
 
 const navItems = [
@@ -10,9 +11,23 @@ const navItems = [
 
 type LandingHeaderProps = {
   onOpenResponsibleAI: () => void;
+  onNavigateToSection?: (href: string) => void;
 };
 
-export function LandingHeader({onOpenResponsibleAI}: LandingHeaderProps) {
+export function LandingHeader({
+  onOpenResponsibleAI,
+  onNavigateToSection,
+}: LandingHeaderProps) {
+  const handleNavigate =
+    (href: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+      if (!onNavigateToSection) {
+        return;
+      }
+
+      event.preventDefault();
+      onNavigateToSection(href);
+    };
+
   return (
     <header className="landing-header">
       <div className="container landing-header__inner">
@@ -20,6 +35,7 @@ export function LandingHeader({onOpenResponsibleAI}: LandingHeaderProps) {
           href="#hero"
           className="landing-header__brand"
           aria-label="Beyond8 home"
+          onClick={handleNavigate("#hero")}
         >
           <img
             src="/logo.png"
@@ -36,6 +52,7 @@ export function LandingHeader({onOpenResponsibleAI}: LandingHeaderProps) {
                 key={item.href}
                 href={item.href}
                 className="landing-header__link"
+                onClick={handleNavigate(item.href)}
               >
                 {item.label}
               </a>

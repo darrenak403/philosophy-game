@@ -91,7 +91,8 @@
 #quantity-quality,
 #contradiction,
 #negation,
-#game-cta {
+#game-cta,
+#ai-appendix {
   scroll-margin-top: 100px;
 }
 
@@ -280,7 +281,8 @@
   #quantity-quality,
   #contradiction,
   #negation,
-  #game-cta {
+  #game-cta,
+  #ai-appendix {
     scroll-margin-top: 150px;
   }
 
@@ -357,7 +359,8 @@
 #quantity-quality,
 #contradiction,
 #negation,
-#game-cta {
+#game-cta,
+#ai-appendix {
   position: relative;
   overflow: hidden;
 }
@@ -371,7 +374,8 @@ main > .section + .section {
 #quantity-quality::before,
 #contradiction::before,
 #negation::before,
-#game-cta::before {
+#game-cta::before,
+#ai-appendix::before {
   content: '';
   position: absolute;
   inset: -150px -10px; /* extra bleed for soft top/bottom blend */
@@ -401,13 +405,15 @@ main > .section + .section {
 #contradiction::before { background-image: url('/assets/bg/contradiction.webp'); }
 #negation::before { background-image: url('/assets/bg/negation.webp'); }
 #game-cta::before { background-image: url('/assets/bg/hero.webp'); filter: blur(12px) brightness(0.15); }
+#ai-appendix::before { background-image: url('/assets/bg/hero.webp'); filter: blur(12px) brightness(0.14); }
 
 /* section tint layer to smooth color continuity at boundaries */
 #development::after,
 #quantity-quality::after,
 #contradiction::after,
 #negation::after,
-#game-cta::after {
+#game-cta::after,
+#ai-appendix::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -428,9 +434,20 @@ main > .section + .section {
 #quantity-quality > .container,
 #contradiction > .container,
 #negation > .container,
-#game-cta > .container {
+#game-cta > .container,
+#ai-appendix > .container {
   position: relative;
   z-index: 3;
+}
+
+#ai-appendix .card {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#ai-appendix .body-large {
+  color: var(--text-secondary);
 }
 
 .section-blend-overlay {

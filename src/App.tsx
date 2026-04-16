@@ -6,6 +6,7 @@ import { QuantityQualitySection } from './components/landing/QuantityQualitySect
 import { ContradictionSection } from './components/landing/ContradictionSection';
 import { NegationSection } from './components/landing/NegationSection';
 import { GameCTASection } from './components/landing/GameCTASection';
+import { AIAppendixSection } from './components/landing/AIAppendixSection';
 import { FooterSection } from './components/landing/FooterSection';
 import { ResponsibleAIPage } from './components/landing/ResponsibleAIPage';
 import { GameScreen } from './components/game/GameScreen';
@@ -61,6 +62,7 @@ function App() {
       <ContradictionSection />
       <NegationSection />
       <GameCTASection onStartGame={() => setPage('game')} />
+      <AIAppendixSection onOpenResponsibleAI={() => setPage('responsible-ai')} />
       <FooterSection />
     </main>
   );
